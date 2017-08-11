@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Studentapp3</title>
+    <title>StudentApp3</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   </head>
-
   <body>
     <div id="flex-content-container">
       <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-     <span class="navbar-toggler-icon"></span>
-   </button>
-   <a class="navbar-brand" href="#">StudentApp3</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-     <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <%= link_to 'StudentApp3', root_url, class: 'navbar-brand' %>
+          <ul class="nav navbar-nav">
+    </ul>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign up!', new_user_registration_path, class: 'nav-link' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
 
-       <li class="nav-item">
-         <a class="nav-link" href="#">Courses</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link disabled" href="#">Log in</a>
-       </li>
-     </ul>
-   </div>
- </nav>
-  <% if notice.present? %>
-    <p class="alert alert-info"><%= notice %></p>
-  <% end %>
-  <% if alert.present? %>
-    <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
+      <% if notice.present? %>
+        <p class="alert alert-info"><%= notice %></p>
+      <% end %>
 
-  <%= yield %>
-</div>
+      <% if alert.present? %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>
+    </div>
 
     <div id="footer">
       <div class="container">
         <b>Teachers</b>
         <br />
-        <%= link_to 'Teach a Course', new_instructor_course_path %>
+        <%= link_to 'Teach a Course', 'new_instructor_course_path' %>
       </div>
     </div>
   </body>
