@@ -14,6 +14,15 @@
   color: white;
 }
 
+/*.nav-item {
+    text-align: right;
+}
+*/
+
+.nav-link {
+  color: white;
+}
+
 .hero {
   background: image_url('hero.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -31,6 +40,7 @@ h1, h2, h3, h4, h5, h6, .navbar {
 .frosty {
   background: rgba(0, 0, 0, 0.5);
   color: white;
+  height: 200px;
 }
 
 .frosty h1 {
@@ -72,9 +82,7 @@ body {
   clear: both;
 }
 
-.nav-link {
-  color: white;
-}
+
 
 .lesson {
   background-color: black;
